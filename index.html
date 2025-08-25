@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volta Ao Mundo</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3631/3631435.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>  
+    <style>
+    body {
+        /* Gradient background with subtle clouds overlay */
+        background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+    }
+    .cloud {
+        position: absolute;
+        background: #fff;
+        border-radius: 50%;
+        opacity: 0.7;
+        filter: blur(2px);
+        animation: cloud-move 60s linear infinite;
+    }
+    .cloud1 { width: 120px; height: 60px; top: 40px; left: 10%; animation-delay: 0s;}
+    .cloud2 { width: 90px; height: 45px; top: 120px; left: 70%; animation-delay: 10s;}
+    .cloud3 { width: 60px; height: 30px; top: 200px; left: 40%; animation-delay: 20s;}
+    .cloud4 { width: 100px; height: 50px; top: 300px; left: 80%; animation-delay: 30s;}
+    .cloud5 { width: 80px; height: 40px; top: 400px; left: 20%; animation-delay: 40s;}
+    @keyframes cloud-move {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(100vw); }
+    }
+    @keyframes pendulo {
+        0%   { transform: rotate(-15deg); }
+        50%  { transform: rotate(15deg); }
+        100% { transform: rotate(-15deg); }
+    }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center px-4 py-6">
+    <!-- Decorative clouds -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
+    <div class="cloud cloud5"></div>
+
+    <h1 class="text-2xl md:text-4xl font-bold mb-6 text-center">Volta Ao Mundo</h1>
+    <p class="text-gray-600 italic mb-4 text-center text-red-600">* Digite o país em inglês</p>
+
+    <form onsubmit="buscarLocal(event)" class="flex flex-col gap-3 w-full max-w-sm">
+        <input type="text" id="local" placeholder="Digite um local" class="border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <button type="submit" class="bg-blue-600 text-white rounded p-2 font-semibold hover:bg-blue-700 transition">Buscar</button>
+    </form>
+    <div id="resultado" class="mt-6 w-full max-w-md">
+        <!-- Resultado da busca será exibido aqui -->
+    </div>
+    <div class="flex justify-center mt-10">
+        <div class="relative w-40 h-56 flex items-start justify-center">
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/3631/3631435.png" 
+                alt="Balão de ar quente" 
+                class="w-40 h-40 animate-pendulo origin-top"
+                style="animation: pendulo 2.5s infinite ease-in-out alternate;"
+            >
+        </div>
+    </div>
+</body>
+<script>
+    async function buscarLocal(event) {
+        event.preventDefault();
+        const local = document.getElementById('local').value;
+        const resultadoDiv = document.getElementById('resultado');
+        resultadoDiv.innerHTML = 'Buscando...';
+
+        try {
+            const response = await fetch(`https://restcountries.com/v3.1/name/${local}`);
+            if (!response.ok) {
+                throw new Error('Nenhum país encontrado.');
+            }
+            const data = await response.json();
+            if (!Array.isArray(data) || data.length === 0) {
+                resultadoDiv.innerHTML = `<div class="text-red-500">Nenhum resultado encontrado.</div>`;
+                return;
+            }
+            const pais = data[0];
+            resultadoDiv.innerHTML = `
+            <div class="bg-white rounded shadow p-4 flex flex-col gap-3">
+                <div class="flex items-center gap-4 flex-wrap">
+                    <img src="${pais.flags.svg}" alt="Bandeira de ${pais.name.common}" class="w-16 h-10 object-cover rounded border">
+                    <h2 class="text-lg md:text-2xl font-bold">${pais.name.common}</h2>
+                </div>
+                <div><span class="font-semibold">Capital:</span> ${pais.capital ? pais.capital[0] : 'N/A'}</div>
+                <div><span class="font-semibold">Região:</span> ${pais.region}</div>
+                <div><span class="font-semibold">População:</span> ${pais.population.toLocaleString('pt-BR')}</div>
+                <div><span class="font-semibold">Área:</span> ${pais.area.toLocaleString('pt-BR')} km²</div>
+            </div>
+            `;
+        } catch (error) {
+            resultadoDiv.innerHTML = `<div class="text-red-500">Erro: ${error.message}</div>`;
+        }
+    }
+
+    document.querySelector('form').addEventListener('submit', buscarLocal);
+</script>
+</html>
