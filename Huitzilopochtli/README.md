@@ -1,73 +1,26 @@
-# React + TypeScript + Vite
+# Aztec Bird Finder (Huitzilopochtli)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Ícone do Projeto](public/huitzilopochtli.ico)
 
-Currently, two official plugins are available:
+Bem-vindo ao repositório do **Huitzilopochtli**, uma aplicação web moderna desenvolvida para explorar a avifauna local. Utilizando a geolocalização do navegador, a aplicação consulta a API do iNaturalist para buscar e exibir observações de pássaros recentes na região do usuário.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O nome do projeto, Huitzilopochtli, é uma referência ao deus asteca do sol e da guerra, que frequentemente era associado a beija-flores.
 
-## React Compiler
+Este repositório também contém uma atividade bônus (`atv1`), um simples buscador de informações sobre países.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Funcionalidades Principais
 
-## Expanding the ESLint configuration
+* **Detecção de Localização:** Utiliza a API de Geolocalização do navegador para identificar la localização do usuário com permissão.
+* **Busca de Avifauna:** Conecta-se à API pública do iNaturalist para buscar observações de pássaros (`Aves`) em um raio de 200km.
+* **Nomes em Português:** A busca é configurada para priorizar nomes de espécies populares no Brasil (`locale=pt-BR`).
+* **Exibição em Cards Detalhados:** Mostra os resultados em cards, contendo:
+    * Foto da ave.
+    * Nome popular e científico.
+    * Local, data e hora do avistamento.
+    * Nome do observador e atribuição da foto.
+    * Link para a página da espécie na Wikipédia.
+* **Componentização:** O código é estruturado em componentes React reutilizáveis para melhor manutenibilidade.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🗺️ Atividade Bônus: Volta Ao Mundo
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Dentro

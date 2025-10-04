@@ -86,6 +86,8 @@ const BirdFinder: React.FC = () => {
         setLocation(position.coords);
         setLocationLoading(false);
         fetchBirds(position.coords);
+
+        console.log('Localização obtida:', position.coords);
       },
       (err: GeolocationPositionError) => {
         setLocationError(err.message);
