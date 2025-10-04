@@ -2,7 +2,7 @@
   "name": "Huitzilopochtli - Explorador de Pássaros",
   "short_name": "Huitzilopochtli",
   "description": "Descubra os pássaros observados recentemente na sua região, com base na sua localização.",
-  "start_url": ".https://huitzilopochtli.vercel.app/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#F0D78B",
   "theme_color": "#2596be",
