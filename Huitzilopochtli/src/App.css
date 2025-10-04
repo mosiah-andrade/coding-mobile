@@ -1,0 +1,13 @@
+h1{
+  color: var(--blue);
+}
+button{
+  background-color: var(--green);
+  padding: .5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.findeContainer{
+  display: flex;
+  
+}
