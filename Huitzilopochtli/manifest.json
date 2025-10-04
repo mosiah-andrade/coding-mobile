@@ -1,27 +1,32 @@
 {
-"name": "Huitzilopochtli - Explorador de Pássaros",
-"short_name": "Huitzilopochtli",
-"description": "Descubra os pássaros observados recentemente na sua região, com base na sua localização.",
-"start_url": ".",
-"display": "standalone",
-"background_color": "#F0D78B",
-"theme_color": "#2596be",
-"orientation": "portrait-primary",
-"icons": [
-{
-"src": "/huitzilopochtli.ico",
-"type": "image/x-icon",
-"sizes": "64x64 32x32 24x24 16x16"
-},
-{
-"src": "/icon-192.png",
-"type": "image/png",
-"sizes": "192x192"
-},
-{
-"src": "/icon-512.png",
-"type": "image/png",
-"sizes": "512x512"
-}
-]
+  "name": "Huitzilopochtli - Explorador de Pássaros",
+  "short_name": "Huitzilopochtli",
+  "description": "Descubra os pássaros observados recentemente na sua região, com base na sua localização.",
+  "start_url": ".https://huitzilopochtli.vercel.app/",
+  "display": "standalone",
+  "background_color": "#F0D78B",
+  "theme_color": "#2596be",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/huitzilopochtli.ico",
+      "type": "image/x-icon",
+      "sizes": "64x64 32x32 24x24 16x16"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "scope": "https://huitzilopochtli.vercel.app/",
+  "categories": [
+    "education",
+    "utilities"
+  ]
 }
